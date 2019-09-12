@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FamiliesApp.Domain.Infrastructure.Data;
+using FamiliesApp.Domain.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PortafoliosApp.Domain.Behaviors;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace PortafoliosApp
@@ -28,12 +32,45 @@ namespace PortafoliosApp
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddDbContext<ApplicationDbContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                serverOptions => serverOptions.MigrationsAssembly("FamiliesApp"))
+            );
+            // Inject DbContext to VortexServices
+            services.AddScoped<DbContext>(p => p.GetRequiredService<ApplicationDbContext>());
+
+            services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
+            services.AddScoped<IPortafolioBehavior, PortafolioBehavior>();
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
-        }
+
+            var sp = services.BuildServiceProvider();
+            // Create a scope to obtain a reference to the database
+            // context (ApplicationDbContext).
+            using (var scope = sp.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService<ApplicationDbContext>();
+
+
+                // Ensure the database is created.
+                try
+                {
+                    if (!db.Database.EnsureCreated())
+                    {
+                        db.Database.Migrate();
+                    }
+                }
+                catch (Exception e)
+                {
+                    // Do nothing
+                }
+            }
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
