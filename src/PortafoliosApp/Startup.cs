@@ -34,7 +34,7 @@ namespace PortafoliosApp
 
             services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                serverOptions => serverOptions.MigrationsAssembly("FamiliesApp"))
+                serverOptions => serverOptions.MigrationsAssembly("PortafoliosApp"))
             );
             // Inject DbContext to VortexServices
             services.AddScoped<DbContext>(p => p.GetRequiredService<ApplicationDbContext>());
