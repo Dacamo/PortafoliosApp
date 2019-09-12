@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PortafoliosApp.Domain.Models;
 
-namespace PortafoliosApp.Domain.Infrastructure.Data
+namespace FamiliesApp.Domain.Infrastructure.Data
 {
-    class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        { }
+        public DbSet<Portafolio> Portafolios { get; set; }
     }
 }
