@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PortafoliosApp.Commands
 {
-    public class ActualizarPortafolio
+    public class CrearPortafolio
     {
         [Required]
         public string Descripcion { get; set; }

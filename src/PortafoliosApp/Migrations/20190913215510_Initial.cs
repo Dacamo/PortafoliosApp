@@ -14,7 +14,8 @@ namespace PortafoliosApp.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Descripcion = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: false),
+                    Objetivo = table.Column<string>(nullable: false),
                     FechaInicio = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

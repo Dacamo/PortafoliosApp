@@ -26,8 +26,9 @@ namespace PortafoliosApp.Controllers
         }
         [HttpPost]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<Portafolio>> CreateAsync(Portafolio portafolio)
+        public async Task<ActionResult<Portafolio>> CreateAsync(CrearPortafolio crearPortafolio)
         {
+            var portafolio  = _mapper.Map<Portafolio>(crearPortafolio);
             await _portafolioBehavior.CreateAsync(portafolio);
             return CreatedAtAction(nameof(GetByIdAsync), new { id = portafolio.Id }, portafolio);
         }

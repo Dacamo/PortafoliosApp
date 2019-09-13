@@ -25,9 +25,13 @@ namespace PortafoliosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descripcion");
+                    b.Property<string>("Descripcion")
+                        .IsRequired();
 
                     b.Property<DateTime>("FechaInicio");
+
+                    b.Property<string>("Objetivo")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

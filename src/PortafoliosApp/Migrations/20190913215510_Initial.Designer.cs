@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PortafoliosApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190913054722_Initial")]
+    [Migration("20190913215510_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,13 @@ namespace PortafoliosApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Descripcion");
+                    b.Property<string>("Descripcion")
+                        .IsRequired();
 
                     b.Property<DateTime>("FechaInicio");
+
+                    b.Property<string>("Objetivo")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
