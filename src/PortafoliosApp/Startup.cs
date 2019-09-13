@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FamiliesApp.Domain.Infrastructure.Data;
 using FamiliesApp.Domain.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +33,7 @@ namespace PortafoliosApp
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContextPool<ApplicationDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                 serverOptions => serverOptions.MigrationsAssembly("PortafoliosApp"))
             );
@@ -47,6 +48,8 @@ namespace PortafoliosApp
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
+
+            services.AddAutoMapper();
 
             var sp = services.BuildServiceProvider();
             // Create a scope to obtain a reference to the database

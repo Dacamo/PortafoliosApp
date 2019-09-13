@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PortafoliosApp.Commands;
 using PortafoliosApp.Domain.Behaviors;
 using PortafoliosApp.Domain.Models;
 using System;
@@ -15,12 +17,14 @@ namespace PortafoliosApp.Controllers
     {
         private readonly IPortafolioBehavior _portafolioBehavior;
         private readonly IMapper _mapper;
-        public PortafoliosController(IPortafolioBehavior portafolioBehavior)
+
+        public PortafoliosController(IPortafolioBehavior portafolioBehavior,IMapper mapper)
         {
             _portafolioBehavior = portafolioBehavior;
+            _mapper = mapper;
 
         }
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(200)]
         public async Task<ActionResult<Portafolio>> CreateAsync(Portafolio portafolio)
         {
@@ -52,15 +56,19 @@ namespace PortafoliosApp.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult> UpdateAsync(int id, Portafolio portafolio)
+        public async Task<ActionResult> UpdateAsync(int id, ActualizarPortafolio actualizarPortafolio)
         {
-            var portafolioExistente = await _portafolioBehavior.GetByIdAsync(id);
-            if (portafolioExistente == null)
+            var portafolio = await _portafolioBehavior.GetByIdAsync(id);
+            if (portafolio == null)
             {
                 return NotFound();
             }
-            _mapper.Map(portafolio, portafolioExistente);
-            await _portafolioBehavior.UpdateAsync(portafolioExistente);
+            //Use Automapper
+            /*portafolio.Descripcion = actualizarPortafolio.Descripcion;
+            portafolio.FechaInicio = actualizarPortafolio.FechaInicio;*/
+
+            _mapper.Map(actualizarPortafolio, portafolio);
+            await _portafolioBehavior.UpdateAsync(portafolio);
 
             return NoContent();
         }
