@@ -48,7 +48,8 @@ namespace PortafoliosApp
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
-            services.AddAutoMapper();
+            //services.AddAutoMapper();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             var sp = services.BuildServiceProvider();
             // Create a scope to obtain a reference to the database
