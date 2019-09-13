@@ -33,7 +33,9 @@ namespace PortafoliosApp.Test
             {
                Id = 1,
                Descripcion = "descripcion",
-               FechaInicio = DateTime.Parse("jan 1, 2009")
+               FechaInicio = DateTime.Parse("jan 1, 2009"),
+               Objetivo = "objetivo"
+               
 
             };
 
@@ -46,7 +48,9 @@ namespace PortafoliosApp.Test
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             Assert.Equal(1, nuevoPortafolio.Id);
             Assert.Equal("descripcion", nuevoPortafolio.Descripcion);
-            Assert.Equal(DateTime.Parse("jan 1, 2009"), nuevoPortafolio.FechaInicio);
+            Assert.Equal(DateTime.Parse("jan 1, 2009"),
+                nuevoPortafolio.FechaInicio);
+            Assert.Equal("objetivo", nuevoPortafolio.Objetivo);
            
         }
 
