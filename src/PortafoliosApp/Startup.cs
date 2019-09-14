@@ -41,11 +41,12 @@ namespace PortafoliosApp
             services.AddScoped<DbContext>(p => p.GetRequiredService<ApplicationDbContext>());
             services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
             services.AddScoped<IPortafolioBehavior, PortafolioBehavior>();
+            services.AddScoped<IActividadBehavior, ActividadBehavior>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "PortafoliosApp", Version = "v1" });
             });
 
             //services.AddAutoMapper();
