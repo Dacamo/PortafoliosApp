@@ -16,8 +16,5 @@ namespace PortafoliosApp.Domain.Models
         public int Puntaje { get; set; }
         [Required]
         public DateTime Fecha { get; set; }
-
-
-
     }
 }

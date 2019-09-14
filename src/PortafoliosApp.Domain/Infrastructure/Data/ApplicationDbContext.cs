@@ -9,5 +9,6 @@ namespace FamiliesApp.Domain.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         { }
         public DbSet<Portafolio> Portafolios { get; set; }
+        public DbSet<Actividad> Actividades { get; set; }
     }
 }
