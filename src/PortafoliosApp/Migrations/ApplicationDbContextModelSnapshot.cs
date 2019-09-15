@@ -19,6 +19,27 @@ namespace PortafoliosApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("PortafoliosApp.Domain.Models.Actividad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired();
+
+                    b.Property<DateTime>("Fecha");
+
+                    b.Property<int>("Puntaje");
+
+                    b.Property<string>("Tutor")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Actividades");
+                });
+
             modelBuilder.Entity("PortafoliosApp.Domain.Models.Portafolio", b =>
                 {
                     b.Property<int>("Id")

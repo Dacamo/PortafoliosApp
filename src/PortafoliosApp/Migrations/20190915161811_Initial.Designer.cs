@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace PortafoliosApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190913215510_Initial")]
+    [Migration("20190915161811_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,27 @@ namespace PortafoliosApp.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("PortafoliosApp.Domain.Models.Actividad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired();
+
+                    b.Property<DateTime>("Fecha");
+
+                    b.Property<int>("Puntaje");
+
+                    b.Property<string>("Tutor")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Actividades");
+                });
 
             modelBuilder.Entity("PortafoliosApp.Domain.Models.Portafolio", b =>
                 {

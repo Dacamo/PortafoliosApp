@@ -215,5 +215,34 @@ namespace PortafoliosApp.Test
             Assert.Equal(actualizarPortafolioCommand.Objetivo, portafolio.Objetivo);
             Assert.Equal(actualizarPortafolioCommand.FechaInicio, portafolio.FechaInicio);
         }
+        [Fact]
+        public async Task Put_Portafolio_Return_NotFound()
+        {
+            //preparar
+
+            //portafolio
+            var crearPortafolioCommand = new CrearPortafolio
+            {
+                Descripcion = "descripcion",
+                Objetivo = "objetivo",
+                FechaInicio = DateTime.Parse("jan 1, 2009")
+            };
+
+            await _client.PostAsJsonAsync("/api/portafolios", crearPortafolioCommand);
+
+            //nueva informacion portafolio
+            var actualizarPortafolioCommand = new ActualizarPortafolio
+            {
+                Descripcion = "NuevaDescripcion",
+                Objetivo = "NuevoObjetivo",
+                FechaInicio = DateTime.Parse("jan 1, 2018")
+            };
+
+            //ejecutar
+            var response = await _client.PutAsJsonAsync("/api/portafolios/2", actualizarPortafolioCommand);
+
+            //validar
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
     }
 }
