@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortafoliosApp.Domain", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{77265528-6F4D-4353-9D32-029CAE15414F}"
 	ProjectSection(SolutionItems) = preProject
-		DeleteTables.sql = DeleteTables.sql
+		util\DeleteTables.sql = util\DeleteTables.sql
 	EndProjectSection
 EndProject
 Global
