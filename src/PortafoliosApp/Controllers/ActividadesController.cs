@@ -62,5 +62,20 @@ namespace PortafoliosApp.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actividadExistente = await _actividadBehavior.GetByIdAsync(id);
+            if (actividadExistente == null)
+            {
+                return NotFound();
+            }
+
+            await _actividadBehavior.DeleteAsync(actividadExistente);
+            return NoContent();
+        }
+
     }
 }

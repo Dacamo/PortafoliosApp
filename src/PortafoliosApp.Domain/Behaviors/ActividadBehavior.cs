@@ -24,6 +24,11 @@ namespace PortafoliosApp.Domain.Behaviors
             await _actividadRepository.InsertAsync(actividad);
         }
 
+        public async Task DeleteAsync(Actividad actividad)
+        {
+            await _actividadRepository.DeleteAsync(actividad);
+        }
+
         public async Task<List<Actividad>> GetAllAsync()
         {
             return await _actividadRepository.FindAllAsync();
