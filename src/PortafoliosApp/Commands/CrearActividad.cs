@@ -16,5 +16,7 @@ namespace PortafoliosApp.Commands
         public int Puntaje { get; set; }
         [Required]
         public DateTime Fecha { get; set; }
+        [Required]
+        public int PortafolioId { get; set; }
     }
 }
