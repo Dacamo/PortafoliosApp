@@ -10,5 +10,7 @@ namespace PortafoliosApp.Domain.Behaviors
         Task<List<Portafolio>> GetAllAsync();
         Task<Portafolio> GetByIdAsync(int id);
         Task UpdateAsync(Portafolio portafolio);
+        Task DeleteAsync(Portafolio portafolio);
+
     }
 }

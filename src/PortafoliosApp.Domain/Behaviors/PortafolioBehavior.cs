@@ -25,6 +25,11 @@ namespace PortafoliosApp.Domain.Behaviors
 
         }
 
+        public async Task DeleteAsync(Portafolio portafolio)
+        {
+            await _portafolioRepository.DeleteAsync(portafolio);
+        }
+
         public async Task<List<Portafolio>> GetAllAsync()
         {
             return await _portafolioRepository.FindAllAsync();
