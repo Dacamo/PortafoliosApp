@@ -77,5 +77,13 @@ namespace PortafoliosApp.Controllers
             return NoContent();
         }
 
+
+        [HttpGet("portafolioId/{id}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
+        public async Task<List<Actividad>> GetAllActividades(int id)
+        {
+            return await _actividadBehavior.GetAllActividadesByPortafolioId(id);
+        }
     }
 }
