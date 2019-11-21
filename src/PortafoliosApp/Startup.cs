@@ -31,6 +31,7 @@ namespace PortafoliosApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Enable CORS
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
@@ -38,7 +39,6 @@ namespace PortafoliosApp
                     builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
                 });
             });
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<ApplicationDbContext>(
@@ -114,7 +114,6 @@ namespace PortafoliosApp
             
 
             app.UseMvc();
-            
         }
     }
 }
