@@ -10,5 +10,7 @@ namespace FamiliesApp.Domain.Infrastructure.Data
         { }
         public DbSet<Portafolio> Portafolios { get; set; }
         public DbSet<Actividad> Actividades { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<ActividadUsuarios> ActividadUsuarios { get; set; }
     }
 }
