@@ -5,5 +5,5 @@ Abrir Herramientas -> Administrador de paquetes nuget-> Consola de administracio
 
 poner en la consola:
 
-add-migration Initial
-update-database
+1.add-migration Initial    
+2.update-database
