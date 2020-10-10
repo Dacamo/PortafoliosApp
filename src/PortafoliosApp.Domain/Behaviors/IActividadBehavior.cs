@@ -11,8 +11,6 @@ namespace PortafoliosApp.Domain.Behaviors
         Task<Actividad> GetByIdAsync(int id);
         Task UpdateAsync(Actividad actividad);
         Task DeleteAsync(Actividad actividad);
-
         Task<List<Actividad>> GetAllActividadesByPortafolioId(int id);
-
     }
 }

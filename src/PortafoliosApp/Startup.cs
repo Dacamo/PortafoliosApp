@@ -50,6 +50,7 @@ namespace PortafoliosApp
             services.AddTransient(typeof(IDataStorage<>), typeof(DataStorage<>));
             services.AddScoped<IPortafolioBehavior, PortafolioBehavior>();
             services.AddScoped<IActividadBehavior, ActividadBehavior>();
+            services.AddScoped<IUsuarioBehavior, UsuarioBehavior>();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

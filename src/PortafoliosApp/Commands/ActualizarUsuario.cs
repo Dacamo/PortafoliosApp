@@ -1,15 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PortafoliosApp.Domain.Models
+namespace PortafoliosApp.Commands
 {
-    public class Usuario
+    public class ActualizarUsuario
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public string Nombres { get; set; }
+        [Required]
         public string Apellidos { get; set; }
+        [Required]
         public string Correo { get; set; }
         public DateTime FechaNacimiento { get; set; }
     }
