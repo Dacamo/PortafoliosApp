@@ -8,6 +8,7 @@ namespace PortafoliosApp.Mappings
     {
         public UsuariosMappings()
         {
+            CreateMap<CrearUsuario, Usuario>();
             CreateMap<ActualizarUsuario, Usuario>();
         }
     }
