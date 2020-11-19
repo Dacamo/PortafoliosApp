@@ -17,9 +17,11 @@ namespace PortafoliosApp.Domain.Behaviors
 
         public async Task CreateAsync(Usuario usuario)
         {
-            if(usuario == null) throw new ArgumentNullException(nameof(usuario));
+            if (usuario == null) throw new ArgumentNullException(nameof(usuario));
 
-            //TODO agregar validacion para usuario no existente.
+            var usuarioExistente = _usuarioRepository.FirstOrDefaultAsync(u => u.Correo == usuario.Correo);
+
+            if (usuarioExistente != null) throw new Exception("Usuario con correo existente");
 
             await _usuarioRepository.InsertAsync(usuario);
         }
