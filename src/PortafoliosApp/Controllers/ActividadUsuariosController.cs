@@ -51,6 +51,12 @@ namespace PortafoliosApp.Controllers
             return actividadUsuarioExistente;
         }
 
+        [HttpGet("ActividadId/{id}")]
+        public async Task<List<ActividadUsuarios>> GetByActividadIdAsync(int id)
+        {
+            return await _actividadUsuarioBehavior.GetByActividadIdAsync(id);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateAsync(int id, ActualizarActividadUsuario actualizarActividadUsuario)
         {

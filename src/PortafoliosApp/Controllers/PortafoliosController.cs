@@ -64,9 +64,6 @@ namespace PortafoliosApp.Controllers
             {
                 return NotFound();
             }
-            //Use Automapper
-            /*portafolio.Descripcion = actualizarPortafolio.Descripcion;
-            portafolio.FechaInicio = actualizarPortafolio.FechaInicio;*/
 
             _mapper.Map(actualizarPortafolio, portafolio);
             await _portafolioBehavior.UpdateAsync(portafolio);

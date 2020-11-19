@@ -35,7 +35,12 @@ namespace PortafoliosApp.Domain.Behaviors
 
         public async Task<List<ActividadUsuarios>> GetAllAsync()
         {
-            return await _actividadUsuarioRepository.FindAllAsync();
+            return await _actividadUsuarioRepository.FindAsync(includeProperties: "Usuario");
+        }
+
+        public async Task<List<ActividadUsuarios>> GetByActividadIdAsync(int id)
+        {
+            return await _actividadUsuarioRepository.FindAsync(actividadId => actividadId.ActividadId == id, includeProperties: "Usuario");
         }
 
         public async Task<ActividadUsuarios> GetByIdAsync(int id)
@@ -47,5 +52,6 @@ namespace PortafoliosApp.Domain.Behaviors
         {
             await _actividadUsuarioRepository.UpdateAsync(actividadUsuario);
         }
+
     }
 }

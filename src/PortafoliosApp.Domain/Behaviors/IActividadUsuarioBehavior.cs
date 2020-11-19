@@ -11,5 +11,6 @@ namespace PortafoliosApp.Domain.Behaviors
         Task<ActividadUsuarios> GetByIdAsync(int id);
         Task UpdateAsync(ActividadUsuarios actividadBehavior);
         Task DeleteAsync(ActividadUsuarios actividadBehavior);
+        Task<List<ActividadUsuarios>> GetByActividadIdAsync(int id);
     }
 }
