@@ -19,7 +19,7 @@ namespace PortafoliosApp.Domain.Behaviors
         {
             if (usuario == null) throw new ArgumentNullException(nameof(usuario));
 
-            var usuarioExistente = _usuarioRepository.FirstOrDefaultAsync(u => u.Correo == usuario.Correo);
+            var usuarioExistente = await _usuarioRepository.FirstOrDefaultAsync(u => u.Correo == usuario.Correo);
 
             if (usuarioExistente != null) throw new Exception("Usuario con correo existente");
 
