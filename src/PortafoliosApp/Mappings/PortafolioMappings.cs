@@ -9,8 +9,7 @@ namespace PortafoliosApp.Mappings
         public PortafolioMappings()
         {
             CreateMap<ActualizarPortafolio, Portafolio>();
-            CreateMap<CrearPortafolio, Portafolio>();
-            
+            CreateMap<CrearPortafolio, Portafolio>();  
         }
     }
 }

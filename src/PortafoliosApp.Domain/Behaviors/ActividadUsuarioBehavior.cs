@@ -52,6 +52,5 @@ namespace PortafoliosApp.Domain.Behaviors
         {
             await _actividadUsuarioRepository.UpdateAsync(actividadUsuario);
         }
-
     }
 }

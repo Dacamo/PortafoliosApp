@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PortafoliosApp.Domain.Models;
 
 namespace FamiliesApp.Domain.Infrastructure.Data

@@ -21,7 +21,6 @@ namespace PortafoliosApp.Controllers
         {
             _actividadUsuarioBehavior = actividadUsuarioBehavior;
             _mapper = mapper;
-
         }
 
         [HttpPost]

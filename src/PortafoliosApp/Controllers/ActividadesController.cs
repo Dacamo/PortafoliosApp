@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PortafoliosApp.Commands;
 using PortafoliosApp.Domain.Behaviors;
 using PortafoliosApp.Domain.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PortafoliosApp.Controllers
